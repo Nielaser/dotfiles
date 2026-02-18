@@ -112,4 +112,6 @@ alias lugryn="paru"
 alias commands="cat cool"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export EDITOR="/usr/bin/nvim"
+export EDITOR="/usr/bin/helix"
+export DIR="/home/lugryn/dotfiles"
+
