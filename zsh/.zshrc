@@ -111,6 +111,6 @@ source $ZSH/oh-my-zsh.sh
 alias lugryn="paru"
 alias commands="cat cool"
 export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin/scripts:$PATH"
 export EDITOR="/usr/bin/helix"
-source "$HOME/.local/bin/scripts/wallpaper-selector.zsh"
+

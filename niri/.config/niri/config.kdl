@@ -108,7 +108,8 @@ binds {
 
 
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-    Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    //Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Mod+Space hotkey-overlay-title="Run an Application: walker" { spawn-sh "elephant & walker"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     Mod+Shift+E { spawn-sh "kitty -e spf"; }
@@ -120,7 +121,7 @@ binds {
     Mod+S { spawn-sh "kitty --title WireTui -e wiremix"; }
     Mod+I { spawn-sh "kitty --title ImpalaTui -e impala"; }
     Mod+B { spawn-sh "kitty --title BlueTui -e bluetui"; }
-    Mod+Alt+Space { spawn-sh "kitty --title WallSelector -e ~/.local/bin/scripts/wallselector.sh"; }
+    Mod+Alt+Space { spawn-sh "kitty --title WallSelector -e ~/.local/bin/scripts/wallselector"; }
 
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
