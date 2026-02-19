@@ -1,0 +1,1 @@
+matugen image "$(find ~/Wallpapers -type f | fzf --preview 'kitty +icat --transfer-mode=file --stdin=no --clear; kitty +icat --transfer-mode=file --stdin=no --place=${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}@0x0 {}')"

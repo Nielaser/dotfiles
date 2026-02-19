@@ -120,7 +120,7 @@ binds {
     Mod+S { spawn-sh "kitty --title WireTui -e wiremix"; }
     Mod+I { spawn-sh "kitty --title ImpalaTui -e impala"; }
     Mod+B { spawn-sh "kitty --title BlueTui -e bluetui"; }
-
+    Mod+Alt+Space { spawn-sh "kitty --title WallSelector -e ~/.local/bin/scripts/wallselector.sh"; }
 
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
