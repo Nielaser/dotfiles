@@ -108,8 +108,8 @@ binds {
 
 
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-    //Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Mod+Space hotkey-overlay-title="Run an Application: walker" { spawn-sh "elephant & walker"; }
+    Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    //Mod+Space hotkey-overlay-title="Run an Application: walker" { spawn-sh "elephant & walker"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     Mod+Shift+E { spawn-sh "kitty -e spf"; }

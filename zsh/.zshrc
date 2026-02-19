@@ -113,4 +113,5 @@ alias commands="cat cool"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin/scripts:$PATH"
 export EDITOR="/usr/bin/helix"
-
+alias ls="exa -l"
+eval "$(zoxide init zsh)"

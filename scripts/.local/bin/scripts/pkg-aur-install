@@ -4,7 +4,7 @@
 
 fzf_args=(
   --multi
-  --preview 'paru -Siia {1}'
+  --preview 'yay -Siia {1}'
   --preview-label='alt-p: toggle description, alt-b/B: toggle PKGBUILD, alt-j/k: scroll, tab: multi-select'
   --preview-label-pos='bottom'
   --preview-window 'down:65%:wrap'
@@ -16,11 +16,11 @@ fzf_args=(
  #--color 'pointer:green,marker:green'
 )
 
-pkg_names=$(paru -Slqa | fzf "${fzf_args[@]}")
+pkg_names=$(yay -Slqa | fzf "${fzf_args[@]}")
 
 if [[ -n "$pkg_names" ]]; then
   # Convert newline-separated selections to space-separated for yay
-  echo "$pkg_names" | tr '\n' ' ' | xargs paru -S --noconfirm
+  echo "$pkg_names" | tr '\n' ' ' | xargs yay -S --noconfirm
   sudo updatedb
   echo "done"
 fi

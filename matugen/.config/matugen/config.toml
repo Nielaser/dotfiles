@@ -7,7 +7,7 @@ block_postfix = "*>"
 
 [config.wallpaper]
 set = true
-command = "awww img --transition-type center {{ image }}"
+command = "swww img --transition-type center {{ image }}"
 
 [templates.kitty]
 input_path = './templates/kitty-colors.conf'
