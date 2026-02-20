@@ -54,3 +54,8 @@ output_path = '~/.config/yazi/theme.toml'
 [templates.helix]
 input_path = './templates/helix.toml'
 output_path = '~/.config/helix/themes/matugen.toml'
+
+[templates.ghostty]
+input_path = './templates/ghostty'
+output_path = '~/.config/ghostty/themes/Matugen'
+post_hook = 'pkill -SIGUSR2 ghostty'
