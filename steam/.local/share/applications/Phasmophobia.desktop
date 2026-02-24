@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=RimWorld
+Name=Phasmophobia
 Comment=Play this game on Steam
-Exec=steam steam://rungameid/294100
-Icon=steam_icon_294100
+Exec=steam steam://rungameid/739630
+Icon=steam_icon_739630
 Terminal=false
 Type=Application
 Categories=Game;

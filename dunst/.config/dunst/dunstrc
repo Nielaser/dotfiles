@@ -3,7 +3,7 @@ monitor = 0
 follow = none
 width = 400
 height = 400
-origin = top-center
+origin = bottom-right
 offset = 10x20
 scale = 0
 notification_limit = 0
@@ -51,25 +51,25 @@ mouse_left_click = close_current
 mouse_middle_click = do_action, close_current
 mouse_right_click = close_all
 separator_color = frame
-frame_color = "#ffb3b4"
-highlight = "#ffb3b4"
-separator_color= "#9f8c8c"
+frame_color = "#fcb975"
+highlight = "#fcb975"
+separator_color= "#9d8e81"
 [experimental]
 per_monitor_dpi = false
 [urgency_low]
 timeout = 3
-background = "#1a1111"
-foreground = "#f0dede"
-highlight = "#733337"
+background = "#19120c"
+foreground = "#efe0d5"
+highlight = "#693c00"
 [urgency_normal]
 timeout = 6
-background = "#1a1111"
-foreground = "#f0dede"
-highlight = "#733337"
+background = "#19120c"
+foreground = "#efe0d5"
+highlight = "#693c00"
 [urgency_critical]
 timeout = 0
-background = "#1a1111"
-foreground = "#f0dede"
+background = "#19120c"
+foreground = "#efe0d5"
 highlight = "#ffb4ab"
 
 

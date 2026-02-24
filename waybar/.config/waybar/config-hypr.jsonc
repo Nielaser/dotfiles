@@ -1,17 +1,18 @@
-[{
+{
     "height": 30,
     "spacing": 5, 
 
     "modules-left": [
         "group/Utilities",
         "group/workspaces",
-        "mpris"
+        "mpris",
     ],
     "modules-center": [
         "group/windows"
     ],
     "modules-right": [
-        "tray",
+        "group/tray",
+        "custom/closebracket",
         "group/cpuram",
         "group/system"
     ],
@@ -30,15 +31,26 @@
       "tooltip": false
     },
 
+    "group/tray": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition": 500,
+            "click-to-reveal": false,
+            "children-class": "not-power",
+            "transition-left-to-right": true
+        },
+        "modules": [
+            "custom/openbracket",
+            "tray"
+        ]
+    },
+
     "group/Utilities":{
         "orientation": "horizontal",
         "modules":[
             "custom/openbracket",
             "custom/arch",
             "idle_inhibitor",
-            "custom/split",
-            "custom/powerprofile",
-            "custom/themeswitcher",
             "gamemode",
             "custom/closebracket"
         ]
@@ -47,14 +59,6 @@
          "format": "󰣇",
         "tooltip": false,
          "on-click": "fuzzel"
-    },
-    "custom/powerprofile": {
-        "exec": "~/.config/waybar/scripts/powerprofile.sh display",
-        "on-click": "~/.config/waybar/scripts/powerprofile.sh toggle",
-        "interval": 5,
-        "tooltip": true,
-        "exec-tooltip": "~/.config/waybar/scripts/powerprofile.sh tooltip",
-        "tooltip-format": "Power Profile: {} \nClick to cycle: Efficient → Normal → Overclocked"
     },
 
     "group/workspaces":{
@@ -139,7 +143,6 @@
             "custom/split",
             "memory",
             "custom/closebracket",
-            "gamemode"
         ]
     },
     "cpu": {
@@ -230,16 +233,9 @@
         "format-wifi": "{icon}",
         "format-ethernet": "󰈀 LAN",
         "format-disconnected": "󰖪",
-        "tooltip-format": "{ipaddr}\n{ssid} ({signalStrength}%)",
         "on-click": "kitty --title Impala -e impala",
         "format-icons": [ "󰤯", "󰤟", "󰤢", "󰤥", "󰤨" ]
-    },
-    "custom/bluetooth": {
-    "format": "{}",
-    "exec": "~/.config/waybar/scripts/bluetooth_status.sh",
-    "interval": 5,
-    "on-click": "blueman-manager"
-    },
+        },
     "group/clock": {
         "orientation": "horizontal",
         "modules": [
@@ -255,6 +251,8 @@
         "max-length": 50,
         "on-click": "pkill cava"
     },
+
+
     "tray": {
         "icon-size": 14,
         "spacing": 10
@@ -264,4 +262,4 @@
     "tooltip": false,
     "on-click": "~/.config/waybar/scripts/notification_center.sh"
     }
-}]
+}
