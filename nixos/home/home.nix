@@ -35,6 +35,7 @@ autosuggestion.enable = true;
 syntaxHighlighting.enable = true;
 sessionVariables = {
     EDITOR = "nvim";
+    MANPAGER = "most";
   };
   initContent = ''
     export PATH=$HOME/.cargo/bin:$HOME/.local/bin/scripts:$HOME/.local/bin:$PATH

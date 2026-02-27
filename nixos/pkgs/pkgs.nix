@@ -34,5 +34,15 @@ home.packages = with pkgs; [
     heroic
     bottles
     sl
+    fastfetch
+    helix
+    psmisc
+    btop
+    iamb
+    impala
+    most
+    grim
+    grimblast
+    wlogout
      ];
 }
