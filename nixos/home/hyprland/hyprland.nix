@@ -92,7 +92,7 @@
   input = {
     kb_layout = "fr";
     follow_mouse = 1;
-    sensitivity = 4;
+    sensitivity = 1.9;
 
     touchpad = {
       natural_scroll = false;
@@ -113,83 +113,89 @@
     disable_hyprland_logo = false;
   };
 
-    bind = [
-        "SUPER, Return, exec, kitty"
-        "SUPER, Space, exec, fuzzel"
-        "SUPER, A, killactive"
-        "SUPER SHIFT, A, forcekillactive"
-        "SUPER SHIFT, Escape, exec, wlogout"
-        "SUPER, E, exec, kitty -e yazi"
-        "SUPER SHIFT, E, exec, kitty -e superfile"
-        "SUPER, V, togglefloating"
-        "SUPER, P, pseudo, # dwindle"
-        "SUPER, J, togglesplit, # dwindle"
-        "SUPER, F, fullscreen"
+  bind = [
+    "SUPER, Return, exec, kitty"
+    "SUPER, Space, exec, fuzzel"
+    "SUPER, A, killactive"
+    "SUPER SHIFT, A, forcekillactive"
+    "SUPER SHIFT, Escape, exec, wlogout"
+    "SUPER, E, exec, kitty -e yazi"
+    "SUPER SHIFT, E, exec, kitty -e superfile"
+    "SUPER, V, togglefloating"
+    "SUPER, P, pseudo, # dwindle"
+    "SUPER, J, togglesplit, # dwindle"
+    "SUPER, F, fullscreen"
 
-        #TUI
-        "SUPER, I, exec, kitty --title ConfigTUI -e impala"
-        "SUPER, M, exec, kitty --title ConfigTUI -e wiremix"
-        "SUPER, B, exec, kitty --title ConfigTUI -e bluetui"
+    #TUI
+    "SUPER, I, exec, kitty --title ConfigTUI -e impala"
+    "SUPER, M, exec, kitty --title ConfigTUI -e wiremix"
+    "SUPER, B, exec, kitty --title ConfigTUI -e bluetui"
 
-        #Move focus
-        "SUPER, left, movefocus, l"
-        "SUPER, right, movefocus, r"
-        "SUPER, up, movefocus, u"
-        "SUPER, down, movefocus, d"
+    #Move focus
+    "SUPER, left, movefocus, l"
+    "SUPER, right, movefocus, r"
+    "SUPER, up, movefocus, u"
+    "SUPER, down, movefocus, d"
 
-        #Switch workspaces
-        "SUPER, Ampersand, workspace, 1"
-        "SUPER, Eacute, workspace, 2"
-        "SUPER, Quotedbl, workspace, 3"
-        "SUPER, Apostrophe, workspace, 4"
-        "SUPER, ParenLeft, workspace, 5"
-        "SUPER, Minus, workspace, 6"
-        "SUPER, Egrave, workspace, 7"
-        "SUPER, Underscore, workspace, 8"
-        "SUPER, Ccedilla, workspace, 9"
-        "SUPER, Agrave, workspace, 10"
+    #Switch workspaces
+    "SUPER, Ampersand, workspace, 1"
+    "SUPER, Eacute, workspace, 2"
+    "SUPER, Quotedbl, workspace, 3"
+    "SUPER, Apostrophe, workspace, 4"
+    "SUPER, ParenLeft, workspace, 5"
+    "SUPER, Minus, workspace, 6"
+    "SUPER, Egrave, workspace, 7"
+    "SUPER, Underscore, workspace, 8"
+    "SUPER, Ccedilla, workspace, 9"
+    "SUPER, Agrave, workspace, 10"
 
-        #Move active window to ... workspace
-        "SUPER SHIFT, Ampersand, movetoworkspace, 1"
-        "SUPER SHIFT, Eacute, movetoworkspace, 2"
-        "SUPER SHIFT, Quotedbl, movetoworkspace, 3"
-        "SUPER SHIFT, Apostrophe, movetoworkspace, 4"
-        "SUPER SHIFT, ParenLeft, movetoworkspace, 5"
-        "SUPER SHIFT, Minus, movetoworkspace, 6"
-        "SUPER SHIFT, Egrave, movetoworkspace, 7"
-        "SUPER SHIFT, Underscore, movetoworkspace, 8"
-        "SUPER SHIFT, Ccedilla, movetoworkspace, 9"
-        "SUPER SHIFT, Agrave, movetoworkspace, 10"
+    #Move active window to ... workspace
+    "SUPER SHIFT, Ampersand, movetoworkspace, 1"
+    "SUPER SHIFT, Eacute, movetoworkspace, 2"
+    "SUPER SHIFT, Quotedbl, movetoworkspace, 3"
+    "SUPER SHIFT, Apostrophe, movetoworkspace, 4"
+    "SUPER SHIFT, ParenLeft, movetoworkspace, 5"
+    "SUPER SHIFT, Minus, movetoworkspace, 6"
+    "SUPER SHIFT, Egrave, movetoworkspace, 7"
+    "SUPER SHIFT, Underscore, movetoworkspace, 8"
+    "SUPER SHIFT, Ccedilla, movetoworkspace, 9"
+    "SUPER SHIFT, Agrave, movetoworkspace, 10"
 
-        #Scroll workspace
-        "SUPER, mouse_up, workspace, e+1"
-        "SUPER, mouse_down, workspace, e-1"
+    #Scroll workspace
+    "SUPER, mouse_up, workspace, e+1"
+    "SUPER, mouse_down, workspace, e-1"
         
-        ", Print, exec, grimblast copy area"
-      ];
+    ", Print, exec, grimblast copy area"
+  ];
 
-      bindm = [
-        #Move/resize window
-        "SUPER, mouse:272, movewindow"
-        "SUPER, mouse:273, resizewindow"
-      ];
+  bindm = [
+    #Move/resize window
+    "SUPER, mouse:272, movewindow"
+    "SUPER, mouse:273, resizewindow"
+  ];
 
-      bindel = [
-        # Laptop multimedia keys for volume and LCD brightness
-          ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
-          ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-          ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-          ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-          ",XF86MonBrightnessUp, exec, brightnessctl -e4 -n2 set 5%+"
-          ",XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 5%-"        
-      ];
+  bindel = [
+    # Laptop multimedia keys for volume and LCD brightness
+    ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
+    ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+    ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+    ",XF86MonBrightnessUp, exec, brightnessctl -e4 -n2 set 5%+"
+    ",XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 5%-"        
+  ];
 
-      bindl = [
-        #Require playerctl
-        ", XF86AudioNext, exec, playerctl next"
-        ", XF86AudioPause, exec, playerctl play-pause"
-        ", XF86AudioPlay, exec, playerctl play-pause"
-        ", XF86AudioPlay, exec, playerctl previous"
-      ];
+  bindl = [
+    #Require playerctl
+    ", XF86AudioNext, exec, playerctl next"
+    ", XF86AudioPause, exec, playerctl play-pause"
+    ", XF86AudioPlay, exec, playerctl play-pause"
+    ", XF86AudioPlay, exec, playerctl previous"
+    ];
+
+    windowrule = [
+          "float yes, move 20 monitor_h-120, match:class hyprland-run"
+          "float yes, size 350 200, match:class zen, match:title ^Pictures-in-Pictures$"
+          "float yes, size 800 600, match:class kitty, match:title ConfigTUI"
+    ];
   };
 }

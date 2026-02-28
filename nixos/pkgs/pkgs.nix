@@ -44,5 +44,6 @@ home.packages = with pkgs; [
     grim
     grimblast
     wlogout
-     ];
+    neovim
+  ];
 }
