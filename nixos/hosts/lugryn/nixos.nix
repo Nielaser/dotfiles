@@ -1,58 +1,70 @@
-{ config, pkgs, inputs,  ... }:
-
 {
-  imports = [ 
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
-      ];
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.default
+    ../../stylix/stylix.nix
+  ];
 
-home-manager = {
-  useUserPackages = true;
-  useGlobalPkgs = true;
-  backupFileExtension = "backup"; # This will rename .zshrc to .zshrc.backup
-  users.lugryn = import ../../home/home.nix;
-};
+  home-manager = {
+    useUserPackages = true;
+    useGlobalPkgs = true;
+    backupFileExtension = "backup";
+    users.lugryn = import ../../home/home.nix;
+  };
 
-nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
-users.users.lugryn = {
-  isNormalUser = true;
-  description = "lugryn";
-  extraGroups = [ "networkmanager" "wheel" ];
-  home = "/home/lugryn";
-  shell = pkgs.zsh;
-};
+  users.users.lugryn = {
+    isNormalUser = true;
+    description = "lugryn";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+    home = "/home/lugryn";
+    shell = pkgs.zsh;
+  };
 
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
-# Bootloader.
-boot.loader.systemd-boot.enable = true;
-boot.loader.efi.canTouchEfiVariables = true;
+  networking.hostName = "nixos"; # Define your hostname.
 
-networking.hostName = "nixos"; # Define your hostname.
+  services = {
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+    gnome.core-apps.enable = false;
+    gnome.core-developer-tools.enable = false;
+    gnome.games.enable = false;
+  };
 
-services = {
-  displayManager.gdm.enable = true;
-  desktopManager.gnome.enable = true;
-  gnome.core-apps.enable = false;
-  gnome.core-developer-tools.enable = false;
-  gnome.games.enable = false;
-};
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-tour
+    gnome-user-docs
+  ];
 
-environment.gnome.excludePackages = with pkgs; [ gnome-tour gnome-user-docs ];
-
-services.dunst.enable = true;
+  services.dunst.enable = true;
 
   networking.wireless.enable = false;
   networking.networkmanager.enable = false;
   networking.wireless.iwd.enable = true;
   networking.wireless.iwd.settings = {
     Ipv6 = {
-        Enable = true;
-      };
-      Settings = {
-          AutoConnect = true;
-        };
+      Enable = true;
     };
+    Settings = {
+      AutoConnect = true;
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";
@@ -84,42 +96,44 @@ services.dunst.enable = true;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  wget
-  zsh
-	brightnessctl
-  gcc
-  cmake
-  pkg-config
-  libffi
-  cargo 
-  rustc
-  go
-  python3
-  inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-
+    wget
+    zsh
+    brightnessctl
+    gcc
+    cmake
+    pkg-config
+    libffi
+    cargo
+    rustc
+    go
+    python3
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    alejandra
+    nixd
+    base16-schemes
   ];
 
-programs.steam = {
-  enable = true;
-  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-};
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
-programs.zsh.enable = true;
-services.flatpak.enable = true;
-programs.hyprland.enable = true;
-programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-programs.niri.enable = true;
-    # This value determines the NixOS release from which the default
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
+
+  programs.zsh.enable = true;
+  services.flatpak.enable = true;
+  programs.hyprland.enable = true;
+  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  programs.niri.enable = true;
+  # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
-
 }
