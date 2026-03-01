@@ -22,9 +22,15 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
       };
+
+    #stylix
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, hyprland, stylix, ... }@inputs:
     let
       system = "x86-64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -33,6 +39,7 @@
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
+          stylix.nixosModules.stylix
           ./hosts/lugryn/nixos.nix
           inputs.home-manager.nixosModules.default
         ];

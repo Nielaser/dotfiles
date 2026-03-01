@@ -3,6 +3,7 @@
   imports = [
     ./hyprland/hyprland.nix
     ../pkgs/pkgs.nix
+    ./kitty/kitty.nix
   ];
   
   # Home Manager needs a bit of information about you and the paths it should
@@ -44,6 +45,7 @@ sessionVariables = {
 shellAliases = {
 ls = "exa -l";
 update = "sudo nixos-rebuild switch --flake /home/lugryn/dotfiles/nixos/.";
+add = "git add ~/dotfiles/"
 };
 history.size = 10000;
   oh-my-zsh = {
@@ -52,8 +54,6 @@ history.size = 10000;
     theme = "darkblood";
   };
 };
-
-
 
  
 

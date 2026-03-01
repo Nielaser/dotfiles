@@ -45,5 +45,8 @@ home.packages = with pkgs; [
     grimblast
     wlogout
     neovim
+    cava
+    cmatrix
+    imagemagick
   ];
 }
