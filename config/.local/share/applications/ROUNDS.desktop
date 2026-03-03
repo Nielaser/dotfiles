@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ROUNDS
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/1557740
+Icon=steam_icon_1557740
+Terminal=false
+Type=Application
+Categories=Game;

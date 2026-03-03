@@ -8,7 +8,8 @@
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
     ../../stylix/stylix.nix
-  ];
+    ../../modules/nvf/nvf.nix
+    ];
 
   home-manager = {
     useUserPackages = true;
@@ -113,6 +114,7 @@
     alejandra
     nixd
     base16-schemes
+    solaar
   ];
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
@@ -123,7 +125,7 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
-
+ 
   programs.zsh.enable = true;
   services.flatpak.enable = true;
   programs.hyprland.enable = true;

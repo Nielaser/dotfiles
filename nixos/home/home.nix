@@ -5,7 +5,8 @@
     ./hyprland/hyprland.nix
     ../pkgs/pkgs.nix
     ./kitty/kitty.nix
-  ];
+ #   ./waybar/waybar.nix
+    ];
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -57,7 +58,7 @@
       theme = "darkblood";
     };
   };
-
+  
   home.sessionVariables = {
     STEAM_EXTRA_COMPAT_TOOLS_PATH = "\${HOME}/.steam/root/compatibilitytools.d";
   };

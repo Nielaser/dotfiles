@@ -49,5 +49,7 @@
     cava
     cmatrix
     imagemagick
-  ];
+    vim
+    appflowy
+    ];
 }

@@ -28,6 +28,12 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    #nvf
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -37,6 +43,7 @@
       home-manager,
       hyprland,
       stylix,
+      nvf,
       ...
     }@inputs:
     let
@@ -50,6 +57,7 @@
           stylix.nixosModules.stylix
           ./hosts/lugryn/nixos.nix
           inputs.home-manager.nixosModules.default
+          nvf.nixosModules.default
         ];
       };
 
