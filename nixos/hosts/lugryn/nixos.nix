@@ -25,6 +25,15 @@
     "nix-command"
     "flakes"
   ];
+  
+  environment = {
+    shells = [ pkgs.zsh ];
+    variables = {
+      EDITOR = "vim";
+      SYSTEMD_EDITOR = "vim";
+      VISUAL = "vim";
+    };
+  };
 
   users.users.lugryn = {
     isNormalUser = true;
@@ -120,6 +129,9 @@
     nerd-fonts.caskaydia-mono
     solaar
     electron
+    playerctl
+    wine-staging
+    winetricks
   ];
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
@@ -158,6 +170,8 @@ xdg.portal = {
     };
   };
 };
+
+  programs.niri.enable = true;
   programs.zsh.enable = true;
   services.flatpak.enable = true;
   programs.hyprland.enable = true;

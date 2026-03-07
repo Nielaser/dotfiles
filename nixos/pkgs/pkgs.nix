@@ -1,7 +1,13 @@
 { config, pkgs, ... }:
 {
   home.packages = with pkgs; [
+    localsend
+    ckan
+    kdePackages.filelight
+    wev
     atool
+    ani-cli
+    itch
     httpie
     hello
     kitty

@@ -39,6 +39,13 @@
     niri = {
       url = "github:sodiboo/niri-flake";
       };
+     #gruvbox-wallpapers
+    gruvbox-wallpapers.url = "github:AngelJumbo/gruvbox-wallpapers";
+
+
+
+
+
   };
 
   outputs =

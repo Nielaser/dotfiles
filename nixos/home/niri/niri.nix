@@ -11,15 +11,84 @@
   programs.niri = {
     enable = true;
     settings = {
+      prefer-no-csd = true;
+      screenshot-path = "~/Pictures/screenshots/screenshot from %Y-%m-%d %H-%M-%S.png";
+
+      spawn-at-startup = [
+        {argv = ["waybar"];}
+        {sh = "swww-daemon";}
+      ];
+
+      workspaces = {
+        "chat" = {
+          name = "chat";
+        };
+
+        "games" = {
+          name = "games";
+        };
+      };
+
+      input = {
+        focus-follows-mouse = {
+          enable = true;
+          max-scroll-amount = "10%";
+        };
+        keyboard = {
+          numlock = false;
+          repeat-delay = 300;
+          repeat-rate = 40;
+          xkb = {
+            layout = "fr, us";
+          };
+        };
+
+        touchpad = {
+          tap = true;
+          natural-scroll = true;
+        };
+      };
+
+      layout = {
+        border = {
+          enable = true;
+          width = 2;
+          active.color = "#${config.lib.stylix.colors.base0D}";
+          inactive.color = "#${config.lib.stylix.colors.base01}";
+        };
+
+        focus-ring = {
+          enable = false;
+          width = 4;
+        };
+
+        default-column-width = {
+          proportion = 0.5;
+        };
+
+        gaps = 8;
+      };
+
+      window-rules = [
+        {
+          matches = [{title = "ConfigTUI";}];
+          default-column-width.fixed = 800;
+          default-window-height.fixed = 500;
+          open-floating = true;
+          open-focused = true;
+        }
+      ];
+
       binds = with config.lib.niri.actions; {
         "Mod+Shift+Colon".action = show-hotkey-overlay;
         "Mod+Return".action.spawn = "kitty";
         "Mod+Space".action.spawn = "fuzzel";
         "Mod+Alt+L".action.spawn = "swaylock";
 
+        "Mod+Shift+W".action.spawn-sh = "kitty --title ConfigTUI -e wallselector";
         "Mod+E".action.spawn-sh = "kitty -e yazi";
         "Mod+Alt+E".action.spawn = "nautilus";
-        "Mod+Alt+D".action.spawn-sh = "kitty -e discordo";
+        "Mod+D".action.spawn-sh = "kitty -e discordo";
         "Mod+Shift+D".action.spawn-sh = "vesktop";
         "Mod+M".action.spawn-sh = "kitty --title ConfigTUI -e wiremix";
         "Mod+I".action.spawn-sh = "kitty --title ConfigTUI -e impala";
@@ -66,12 +135,12 @@
         };
 
         "XF86MonBrightnessUp" = {
-          action = spawn "brightnessctl --class=blacklight set +10%";
+          action = spawn-sh "brightnessctl set +10%";
           allow-when-locked = true;
         };
 
         "XF86MonBrightnessDown" = {
-          action = spawn "brightnessctl --class=backlight set 10%-";
+          action = spawn-sh "brightnessctl set 10%-";
           allow-when-locked = true;
         };
 
@@ -106,7 +175,7 @@
         "Mod+Shift+Page_Up".action = move-workspace-up;
 
         "Mod+Ampersand".action.focus-workspace = 1;
-        "Mod+Eacute".action.focus-workspace = 2;
+        "Mod+2".action.focus-workspace = 2;
         "Mod+Quotedbl".action.focus-workspace = 3;
         "Mod+Apostrophe".action.focus-workspace = 4;
         "Mod+ParenLeft".action.focus-workspace = 5;
@@ -115,7 +184,7 @@
         "Mod+Underscore".action.focus-workspace = 8;
         "Mod+Ccedilla".action.focus-workspace = 9;
         "Mod+Ctrl+Ampersand".action.move-column-to-workspace = 1;
-        "Mod+Ctrl+Eacute" .action.move-column-to-workspace = 2;
+        "Mod+Ctrl+2" .action.move-column-to-workspace = 2;
         "Mod+Ctrl+Quotedbl".action.move-column-to-workspace = 3;
         "Mod+Ctrl+Apostrophe".action.move-column-to-workspace = 4;
         "Mod+Ctrl+ParenLeft".action.move-column-to-workspace = 5;
@@ -130,49 +199,42 @@
         "Mod+Comma".action = consume-window-into-column;
         "Mod+Period".action = expel-window-from-column;
 
-    "Mod+R".action = switch-preset-column-width;
+        "Mod+R".action = switch-preset-column-width;
 
-    "Mod+Shift+R".action =  switch-preset-window-height;
-    "Mod+Ctrl+R".action = reset-window-height;
-    "Mod+F".action = maximize-column;
-    "Mod+Shift+F".action = fullscreen-window;
+        "Mod+Shift+R".action = switch-preset-window-height;
+        "Mod+Ctrl+R".action = reset-window-height;
+        "Mod+F".action = maximize-column;
+        "Mod+Shift+F".action = fullscreen-window;
 
+        "Mod+Ctrl+F".action = expand-column-to-available-width;
 
-    "Mod+Ctrl+F".action = expand-column-to-available-width;
+        "Mod+C".action = center-column;
 
-    "Mod+C".action = center-column;
+        "Mod+Ctrl+C".action = center-visible-columns;
 
+        "Mod+ParenRight".action.set-column-width = "-5%";
+        "Mod+Equal".action.set-column-width = "+5%";
 
-    "Mod+Ctrl+C".action = center-visible-columns;
+        "Mod+Shift+ParenRight".action.set-window-height = "-5%";
+        "Mod+Shift+Equal".action.set-window-height = "+5%";
 
+        "Mod+V".action = toggle-window-floating;
+        "Mod+Shift+V".action = switch-focus-between-floating-and-tiling;
 
-    "Mod+ParenRight".action.set-column-width = "-5%";
-    "Mod+Equal".action.set-column-width = "+5%"; 
+        "Mod+W".action = toggle-column-tabbed-display;
 
+        "Print".action.screenshot = {show-pointer = false;};
+        "Ctrl+Print".action.screenshot-screen = {show-pointer = false;};
 
-    "Mod+Shift+ParenRight".action.set-window-height = "-5%";
-    "Mod+Shift+Equal".action.set-window-height = "+5%";
-
-    "Mod+V".action = toggle-window-floating;
-    "Mod+Shift+V".action =  switch-focus-between-floating-and-tiling;
-
-    "Mod+W".action = toggle-column-tabbed-display;
-
-
-    "Print".action.screenshot = { show-pointer = false; };
-    "Ctrl+Print".action.screenshot-screen = {show-pointer = false; };
-
-    "Mod+Escape" = {
-        allow-inhibiting = false;
-        action = toggle-keyboard-shortcuts-inhibit;
+        "Mod+Escape" = {
+          allow-inhibiting = false;
+          action = toggle-keyboard-shortcuts-inhibit;
         };
 
+        "Mod+Shift+Escape".action = quit;
+        "Ctrl+Alt+Delete".action = quit;
 
-    "Mod+Shift+Escape".action = quit;
-    "Ctrl+Alt+Delete".action = quit;
-
-
-    "Mod+Shift+P".action = power-off-monitors;
+        "Mod+Shift+P".action = power-off-monitors;
       };
     };
   };

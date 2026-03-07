@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Exec=mono "/nix/store/pzj9axh3i29v4l65cdl1q7240776p28p-ckan-1.36.2/bin/ckan.exe" gui %u
+Icon=ckan
+StartupNotify=true
+NoDisplay=true
+Terminal=false
+Categories=Utility
+MimeType=x-scheme-handler/ckan
+Name=CKAN Launcher
+Comment=Launch CKAN

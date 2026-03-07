@@ -9,8 +9,16 @@
     ../pkgs/pkgs.nix
     ./kitty/kitty.nix
     ./waybar/waybar.nix
+    ./waybar/style.nix
     ./niri/niri.nix
   ];
+
+  home.file = {
+      "Pictures/Wallpapers" = {
+      source = inputs.gruvbox-wallpapers.packages."${pkgs.stdenv.hostPlatform.system}".default;
+      recursive = true;
+    };
+  };
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -46,10 +54,12 @@
       export PATH=$HOME/.cargo/bin:$HOME/.local/bin/scripts:$HOME/.local/bin:$PATH
       eval "$(zoxide init zsh)"
     '';
+
     shellAliases = {
       ls = "exa -l";
       update = "sudo nixos-rebuild switch --flake /home/lugryn/dotfiles/nixos/.";
       add = "git add ~/dotfiles/";
+
     };
     history.size = 10000;
     oh-my-zsh = {

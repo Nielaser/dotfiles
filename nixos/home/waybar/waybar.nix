@@ -5,7 +5,7 @@
       mainBar = {
         layer = "top";
         position = "top";
-        heighy = 30;
+        height = 10;
 
         "modules-left" = ["group/Utilities" "group/workspaces" "mpris"];
         "modules-center" = ["group/windows"];
@@ -32,21 +32,22 @@
             "children-class" = "not-power";
             "transition-left-to-right" = true;
           };
+          "modules" = [ "custom/openbracket" "tray" ];
         };
 
       "group/Utilities" = {
         "orientation" = "horizontal";
-        "modules" = ["custom/openbracket" "custom/arch" "idle_inhibitor" "custom/closebracket"];
+        "modules" = ["custom/openbracket" "custom/nix" "custom/closebracket"];
       };
-      "custom/arch" = {
-        "format" = "󰣇";
+      "custom/nix" = {
+        "format" = "";
         "tooltip" = false;
         "on-click" = "fuzzel";
       };
 
       "group/workspaces" = {
         "orientation" = "horizontal";
-        "modules" = ["custom/openbracket" "hyprland/workspaces" "custom/closebracket"];
+        "modules" = ["custom/openbracket" "niri/workspaces" "custom/closebracket"];
       };
 
       "hyprland/workspaces" = {
@@ -94,7 +95,7 @@
 
       "group/windows" = {
         "orientation" = "horizontal";
-        "modules" = ["custom/openbracket" "hyprland/window" "custom/closebracket"];
+        "modules" = ["custom/openbracket" "niri/window" "custom/closebracket"];
       };
 
       "hyprland/window" = {
