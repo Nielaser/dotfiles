@@ -71,6 +71,10 @@
     stow
     r2modman
     wlr-which-key
+<<<<<<< HEAD
 
+=======
+    whatsapp-electron
+>>>>>>> 5a643842570835cdcb97f71f40801b4162679cb6
     ];
 }
