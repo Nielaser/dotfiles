@@ -77,6 +77,12 @@
           open-floating = true;
           open-focused = true;
         }
+
+        {
+          matches = [{title = "Picture in picture";}];
+          open-floating = true;
+          open-focused = false;
+        }
       ];
 
       binds = with config.lib.niri.actions; {

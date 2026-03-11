@@ -2,7 +2,7 @@
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.settings = {
 
-    monitor = ", prefered, auto, 2";
+    monitor = ", 1920x1200, auto, 1";
     exec-once = [
       "swww-daemon"
       "waybar"
@@ -23,7 +23,7 @@
 
       allow_tearing = false;
 
-      layout = "dwindle";
+      #layout = "scrolling";
     };
 
     cursor = {
@@ -54,6 +54,17 @@
       };
     };
 
+    workspace = [
+      "1, layout:scrolling"
+      "2, layout:scrolling"
+      "3, layout:scrolling"
+      "4, layout:dwindle"
+      "5, layout:dwindle"
+      "6, layout:dwindle"
+      "7, layout:master"
+      "8, layout:monocle"
+    ];
+
     animations = {
       enabled = "yes, please :)";
 
@@ -82,25 +93,22 @@
         "fadeLayersIn,  1,     1.79,  almostLinear"
         "fadeLayersOut, 1,     1.39,  almostLinear"
         "workspaces,    1,     1.94,  almostLinear, slide"
-        "workspacesIn,  1,     1.21,  almostLinear, slide"
-        "workspacesOut, 1,     1.94,  almostLinear, slide"
+        "workspacesIn,  1,     1.21,  almostLinear, slide bottom"
+        "workspacesOut, 1,     1.94,  almostLinear, slide bottom"
         "zoomFactor,    1,     7,     quick"
       ];
     };
 
     input = {
-      kb_layout = "fr";
+      kb_layout = "us, fr";
+      kb_options = "grp:caps_toggle";
       follow_mouse = 1;
       sensitivity = 1.9;
-
+      repeat_rate = 50;
+      repeat_delay = 200;
       touchpad = {
         natural_scroll = false;
       };
-    };
-
-    dwindle = {
-      pseudotile = true;
-      preserve_split = true;
     };
 
     master = {
@@ -115,7 +123,7 @@
     bind = [
       "SUPER, Return, exec, kitty"
       "SUPER, Space, exec, fuzzel"
-      "SUPER, A, killactive"
+      "SUPER, code:24, killactive"
       "SUPER SHIFT, A, forcekillactive"
       "SUPER SHIFT, Escape, exec, wlogout"
       "SUPER, E, exec, kitty -e yazi"
@@ -123,12 +131,13 @@
       "SUPER, V, togglefloating"
       "SUPER, P, pseudo, # dwindle"
       "SUPER, J, togglesplit, # dwindle"
-      "SUPER, F, fullscreen"
+      "SUPER Shift, F, fullscreen"
 
       #TUI
       "SUPER, I, exec, kitty --title ConfigTUI -e impala"
-      "SUPER, M, exec, kitty --title ConfigTUI -e wiremix"
+      "SUPER, code:47, exec, kitty --title ConfigTUI -e wiremix"
       "SUPER, B, exec, kitty --title ConfigTUI -e bluetui"
+      "SUPER Alt, Space, exec,  kitty --title ConfigTUI -e wallselector"
 
       #Move focus
       "SUPER, left, movefocus, l"
@@ -137,32 +146,41 @@
       "SUPER, down, movefocus, d"
 
       #Switch workspaces
-      "SUPER, Ampersand, workspace, 1"
-      "SUPER, Eacute, workspace, 2"
-      "SUPER, Quotedbl, workspace, 3"
-      "SUPER, Apostrophe, workspace, 4"
-      "SUPER, ParenLeft, workspace, 5"
-      "SUPER, Minus, workspace, 6"
-      "SUPER, Egrave, workspace, 7"
-      "SUPER, Underscore, workspace, 8"
-      "SUPER, Ccedilla, workspace, 9"
-      "SUPER, Agrave, workspace, 10"
+      "SUPER, code:10, workspace, 1"
+      "SUPER, code:11, workspace, 2"
+      "SUPER, code:12, workspace, 3"
+      "SUPER, code:13, workspace, 4"
+      "SUPER, code:14, workspace, 5"
+      "SUPER, code:15, workspace, 6"
+      "SUPER, code:16, workspace, 7"
+      "SUPER, code:17, workspace, 8"
+      "SUPER, code:18, workspace, 9"
+      "SUPER, code:19, workspace, 10"
+
 
       #Move active window to ... workspace
-      "SUPER SHIFT, Ampersand, movetoworkspace, 1"
-      "SUPER SHIFT, Eacute, movetoworkspace, 2"
-      "SUPER SHIFT, Quotedbl, movetoworkspace, 3"
-      "SUPER SHIFT, Apostrophe, movetoworkspace, 4"
-      "SUPER SHIFT, ParenLeft, movetoworkspace, 5"
-      "SUPER SHIFT, Minus, movetoworkspace, 6"
-      "SUPER SHIFT, Egrave, movetoworkspace, 7"
-      "SUPER SHIFT, Underscore, movetoworkspace, 8"
-      "SUPER SHIFT, Ccedilla, movetoworkspace, 9"
-      "SUPER SHIFT, Agrave, movetoworkspace, 10"
+      "SUPER SHIFT, code:10, movetoworkspace, 1"
+      "SUPER SHIFT, code:11, movetoworkspace, 2"
+      "SUPER SHIFT, code:12, movetoworkspace, 3"
+      "SUPER SHIFT, code:13, movetoworkspace, 4"
+      "SUPER SHIFT, code:14, movetoworkspace, 5"
+      "SUPER SHIFT, code:15, movetoworkspace, 6"
+      "SUPER SHIFT, code:16, movetoworkspace, 7"
+      "SUPER SHIFT, code:17, movetoworkspace, 8"
+      "SUPER SHIFT, code:18, movetoworkspace, 9"
+      "SUPER SHIFT, code:19, movetoworkspace, 10"
+      
 
       #Scroll workspace
       "SUPER, mouse_up, workspace, e+1"
       "SUPER, mouse_down, workspace, e-1"
+
+      #window settings or something like that
+      "Super Shift, code:21, layoutmsg, move +col"
+      "Super Shift, code:20, layoutmsg, move -col"
+      "Super Ctrl, code:21, layoutmsg, swapcol r"
+      "Super Ctrl, code:20, layoutmsg, swapcol l"
+      "Super, F, layoutmsg, fit active"
 
       ", Print, exec, grimblast copy area"
     ];
@@ -181,7 +199,31 @@
       ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
       ",XF86MonBrightnessUp, exec, brightnessctl -e4 -n2 set 5%+"
       ",XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 5%-"
+      
+      #workspaces
+      "SUPER Ctrl, code:112, movetoworkspace, e-1"
+      "SUPER Ctrl, code:117, movetoworkspace, e+1"
+      "Super, code:117, workspace, e+1"
+      "Super, code:112, workspace, e-1"
+      
+      #resize window
+      "Super Ctrl, right, resizeactive, 30 0"
+      "Super Ctrl, left, resizeactive, -30 0"
+      "Super Ctrl, up, resizeactive, 0 -30"
+      "Super Ctrl, down, resizeactive, 0 30"
+      "Super Alt, right, layoutmsg, colresize +0.1"
+      "Super Alt, left, layoutmsg, colresize -0.1"
+
+      #move window
+      "Super Alt, right, moveactive, 30 0"
+      "Super Alt, left, moveactive, -30 0"
+      "Super Alt, up, moveactive, 0 -30"
+      "Super Alt, down, moveactive, 0 30"
+
+
     ];
+
+   
 
     bindl = [
       #Require playerctl

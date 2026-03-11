@@ -14,6 +14,7 @@
     ./dunst/dunst.nix
     ./fuzzel/fuzzel.nix
     ./fish/fish.nix
+    ./sway/sway.nix   
   ];
 
   home.file = {
@@ -84,6 +85,5 @@
   };
 
   home.stateVersion = "25.11";
-
   programs.home-manager.enable = true;
 }

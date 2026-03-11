@@ -39,13 +39,14 @@
     niri = {
       url = "github:sodiboo/niri-flake";
       };
-     #gruvbox-wallpapers
+    #gruvbox-wallpapers
     gruvbox-wallpapers.url = "github:AngelJumbo/gruvbox-wallpapers";
-
-
-
-
-
+    
+    #Quickshell
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -57,10 +58,11 @@
       stylix,
       nvf,
       niri,
+      quickshell,
       ...
     }@inputs:
     let
-      system = "x86-64-linux";
+      system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
@@ -78,7 +80,6 @@
           ./hosts/lugryn/nixos.nix
           inputs.home-manager.nixosModules.default
           nvf.nixosModules.default
-         
         ];
 
       };

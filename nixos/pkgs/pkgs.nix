@@ -1,10 +1,16 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 {
   home.packages = with pkgs; [
     localsend
+    inputs.quickshell.packages.x86_64-linux.default
+    swayfx
     vivaldi
     itch
     libnotify
+    blender
+    krita
+    davinci-resolve
+    image-roll
     ckan
     kdePackages.filelight
     kdePackages.kdeconnect-kde
@@ -71,10 +77,6 @@
     stow
     r2modman
     wlr-which-key
-<<<<<<< HEAD
-
-=======
     whatsapp-electron
->>>>>>> 5a643842570835cdcb97f71f40801b4162679cb6
     ];
 }
