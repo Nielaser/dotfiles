@@ -17,9 +17,9 @@
     ./fish/fish.nix
     ./sway/sway.nix
     ./helix/helix.nix
+    inputs.dms.homeModules.dank-material-shell
     ./dms/dms.nix
-    #./caelestiashell/cealestia.nix
-    #inputs.caelestia-shell.homeManagerModules.default
+    ./rofi/rofi.nix
   ];
 
   home.file = {

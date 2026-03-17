@@ -1,9 +1,12 @@
 {
-  programs.dms-shell = {
+programs.dank-material-shell = {
+  enable = false;
     systemd = {
       enable = true;
       restartIfChanged = true;
     };
+    settings = {
+      
   };
-
+  };
 }

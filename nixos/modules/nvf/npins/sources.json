@@ -1,0 +1,37 @@
+{
+  "pins": {
+    "nixpkgs": {
+      "type": "Channel",
+      "name": "nixpkgs-unstable",
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre963717.a07d4ce6bee6/nixexprs.tar.xz",
+      "hash": "sha256-hfwXTZODckRv5CdezNotB9NgF/6y7j2K0DRoPwMXpFQ="
+    },
+    "nvim-telescope": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nvim-telescope",
+        "repo": "telescope.nvim"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "5255aa27c422de944791318024167ad5d40aad20",
+      "url": "https://github.com/nvim-telescope/telescope.nvim/archive/5255aa27c422de944791318024167ad5d40aad20.tar.gz",
+      "hash": "sha256-dOU6nQaq4W3KZrC2o2wv0NJ2LNWJgvuoNyWOYP2i4vo="
+    },
+    "telescope-zoxide": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "jvgrootveld",
+        "repo": "telescope-zoxide"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "54bfe630bad08dc9891ec78c7cf8db38dd725c97",
+      "url": "https://github.com/jvgrootveld/telescope-zoxide/archive/54bfe630bad08dc9891ec78c7cf8db38dd725c97.tar.gz",
+      "hash": "sha256-LGfyAIbAAAF3q0NpMZx1AIgHLvk6ecpv7RyiL1q8Lxs="
+    }
+  },
+  "version": 7
+}

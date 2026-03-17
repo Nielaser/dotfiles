@@ -20,12 +20,18 @@
 
 
         
-        maps.normal = {
-          "^i" = {
-            action = "lua vim.diagnostic.open_float()";
+        vim.keymaps = [
+          { key = "^i";
+            mode = [ "n" "i" "v" ];
+            action = ":lua vim.diagnostic.open_float()";
             desc = "Show line diagnostic";
-          };
-        };
+          }
+        ];
+
+        startPlugins = [
+          "nvim-telescope"
+          "telescope-zoxide"
+        ];
         options = {
           tabstop = 2;
           softtabstop = 2;
