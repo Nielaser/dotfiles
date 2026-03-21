@@ -22,6 +22,21 @@
 
     users.lugryn = import ../../home/home.nix;
   };
+  
+  #swap
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 16 * 1024; # 16GB
+    }
+  ];
+
+  #zram
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 30;
+  };
 
   nix.settings.experimental-features = [
     "nix-command"
